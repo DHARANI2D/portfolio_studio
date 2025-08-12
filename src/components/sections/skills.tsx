@@ -23,22 +23,15 @@ export function Skills() {
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
             return (
-              <div key={index} className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 group">
-                <div className={`bg-gradient-to-r ${skill.color} p-3 rounded-lg w-fit mb-4`}>
-                  <Icon className="w-6 h-6 text-white" />
+              <div key={index} className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 group flex flex-col items-center text-center hover:transform hover:scale-105">
+                <div className={`bg-gradient-to-r ${skill.color} p-4 rounded-lg w-fit mb-4 group-hover:animate-pulse`}>
+                  <Icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold mb-3">{skill.name}</h3>
-                <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
-                  <div 
-                    className={`bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000 group-hover:animate-pulse`}
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
-                </div>
-                <span className="text-sm text-gray-400">{skill.level}%</span>
+                <h3 className="text-xl font-semibold">{skill.name}</h3>
               </div>
             );
           })}

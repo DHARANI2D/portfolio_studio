@@ -13,7 +13,7 @@ import { Blog } from '@/components/sections/blog';
 import { AskMe } from '@/components/sections/ask-me';
 
 
-export type SectionId = 'home' | 'about' | 'experience' | 'projects' | 'skills' | 'certifications' | 'blog' | 'contact' | 'ask-me';
+export type SectionId = 'home' | 'about' | 'experience' | 'projects' | 'skills' | 'certifications' | 'blog' | 'contact';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<SectionId>('home');
@@ -70,8 +70,8 @@ export default function Home() {
         <Certifications />
         <Blog />
         <Contact />
-        <AskMe />
       </main>
+      <AskMe />
       <Footer />
     </div>
   );

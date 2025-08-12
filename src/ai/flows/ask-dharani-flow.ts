@@ -30,44 +30,63 @@ const prompt = ai.definePrompt({
   If the answer is not in the context, say that you don't have that information. Do not make up information.
 
   CONTEXT:
+  ---
+  **Personal Information:**
   - Name: Dharanidharan Senthilkumar
   - Role: Cybersecurity Specialist & Developer
   - Location: Coimbatore, Tamil Nadu, India
-  - Contact: dharanidharan2d@gmail.com, +91 6385854466
+  - Contact Email: dharanidharan2d@gmail.com
+  - Contact Phone: +91 6385854466
+  - GitHub: https://github.com/DHARANI2D
+  - LinkedIn: https://linkedin.com
   - Education: B.E Computer Science - 8.5 GPA
-  - Summary: An emerging cybersecurity professional with expertise in threat detection, incident response, and secure cloud architectures. Passionate about protecting digital assets and creating innovative security solutions.
-  
-  - Experience:
-    1. Junior Cybersecurity Analyst Intern at Hewlett Packard Enterprise (HPE) (Feb 2024 – Present): Works in the Frontline Incident Response (FRIR) team, monitoring and responding to global cybersecurity threats like phishing and endpoint compromise. Uses tools like Zscaler, CrowdStrike, and Splunk.
-    2. Member of Technical Staff – Intern at Facilio (Sep 2024 – Dec 2024): Built real-time data pipelines using Apache Kafka, Redis, and Apache Storm.
 
-  - Key Skills: 
-    - Cybersecurity (95%)
-    - Cloud Computing (90%)
-    - Python Development (88%)
-    - Machine Learning (85%)
-    - Incident Response (92%)
-    - DevSecOps (87%)
-    - Blockchain (82%)
-    - Pentesting (80%)
-  
-  - Featured Projects:
-    1. Cybersecurity Incident Response Platform: Automated security incident response.
-    2. QuantCrypt: Quantum-resistant cloud storage solution with AWS S3.
-    3. Ransomware Detection & Prevention: Real-time file system monitoring tool.
-    4. Deep Fake Detection Engine: AI-powered video and audio analysis.
-    5. Credit Card Fraud Detection: ML-based fraud detection system.
-    6. Structured Terraform Infrastructure: Modular Kubernetes cluster deployment on AWS.
+  **Professional Summary:**
+  - An emerging cybersecurity professional with expertise in threat detection, incident response, and secure cloud architectures. Passionate about protecting digital assets and creating innovative security solutions.
+  - Specializes in threat detection, automated incident response, and secure cloud architectures. Passion lies in staying ahead of emerging threats and developing proactive security measures.
 
-  - Certifications:
-    - AWS Certified Cloud Practitioner
-    - Microsoft Azure Fundamentals (AZ-900)
-    - Fortinet Certified Cybersecurity Associate
-    - TigerGraph Associate
+  **Experience:**
+  1.  **Junior Cybersecurity Analyst Intern at Hewlett Packard Enterprise (HPE)** (Feb 2024 – Present):
+      - Works in the Frontline Incident Response (FRIR) team, monitoring, analyzing, and responding to global cybersecurity threats.
+      - Handles incidents involving email phishing, endpoint compromise, cloud misconfigurations, and network anomalies.
+      - Utilizes enterprise security tools: Zscaler, Proofpoint, CrowdStrike, Splunk, Wiz, ThreatConnect, and Jira.
+      - Participates in security automation and playbook design for improved detection and faster response.
+  2.  **Member of Technical Staff – Intern at Facilio, Chennai** (Sep 2024 – Dec 2024):
+      - Built real-time data pipelines using Apache Kafka, Redis, and Apache Storm.
+      - Focused on performance tuning, stream analytics, and secure architecture integration.
+      - Assisted in processing large-scale building automation data.
 
-  - Blog Post Topics: Quantum Computing & Blockchain, Quantum Cryptography, General Quantum Computing.
+  **Key Skills (with proficiency):**
+  - Cybersecurity: 95%
+  - Incident Response: 92%
+  - Cloud Computing: 90%
+  - Python Development: 88%
+  - DevSecOps: 87%
+  - Machine Learning: 85%
+  - Blockchain: 82%
+  - Pentesting: 80%
 
-  Now, answer the following question.
+  **Featured Projects (with GitHub links):**
+  1.  **Cybersecurity Incident Response Platform:** Advanced platform for monitoring network traffic and automating security incident responses. (https://github.com/DHARANI2D/Cybersecurity_Incident_Response_Platform)
+  2.  **QuantCrypt - Quantum-Resistant Storage:** Cloud storage solution using quantum-resistant algorithms with AWS S3. (https://github.com/DHARANI2D/quantum-crypt-encryption)
+  3.  **Ransomware Detection & Prevention:** Real-time file system monitoring tool to detect and halt ransomware behavior. (https://github.com/DHARANI2D/ransomware_detection)
+  4.  **Deep Fake Detection Engine:** AI-powered web engine for detecting deep fake videos using spectral analysis. (https://github.com/DHARANI2D/Deep_Fake_Detection)
+  5.  **Credit Card Fraud Detection:** ML-based system to identify evolving fraud tactics. (https://github.com/DHARANI2D/credit-card-fraud-detection-app)
+  6.  **Structured Terraform Infrastructure:** Modular Kubernetes cluster deployment on AWS with secure state management. (https://github.com/DHARANI2D/terraform-aws)
+
+  **Certifications:**
+  - AWS Certified Cloud Practitioner (Amazon Web Services)
+  - Microsoft Azure Fundamentals (AZ-900) (Microsoft)
+  - Fortinet Certified Cybersecurity Associate (Fortinet)
+  - TigerGraph Associate (TigerGraph)
+
+  **Blog Post Topics:**
+  - Exploring the Future of Blockchain in the Age of Quantum Computing
+  - Safeguarding the Future: Quantum Cryptography Unveiled
+  - Quantum Odyssey: Unraveling the Mysteries of Tomorrow Computing
+  ---
+
+  Now, answer the following question based *only* on the context provided above.
 
   Question: {{{question}}}
   Answer:`,

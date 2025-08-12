@@ -36,7 +36,7 @@ export default function Home() {
           setActiveSection(entry.target.id as SectionId);
         }
       });
-    }, { threshold: 0.3 });
+    }, { rootMargin: '-100px 0px 0px 0px', threshold: 0.3 });
 
     const sections = document.querySelectorAll('section');
     sections.forEach(section => observer.observe(section));

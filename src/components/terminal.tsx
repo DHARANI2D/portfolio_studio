@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
-import { Terminal as TerminalIcon, HelpCircle, User, Briefcase, Code, Award, Mail, XCircle } from 'lucide-react';
+import { Terminal as TerminalIcon } from 'lucide-react';
 
 export function Terminal() {
   const [input, setInput] = useState('');
@@ -14,13 +14,13 @@ export function Terminal() {
       content: 'Emerging cybersecurity professional with expertise in threat detection, incident response, and secure cloud architectures. Transforming digital challenges into innovative security solutions.'
     },
     experience: {
-        description: 'Lists my professional experience.',
-        content: (
-            <div>
-                <p>Junior Cybersecurity Analyst Intern @ Hewlett Packard Enterprise (Feb 2024 – Present)</p>
-                <p>Member of Technical Staff – Intern @ Facilio (Sep 2024 – Dec 2024)</p>
-            </div>
-        )
+      description: 'Lists my professional experience.',
+      content: (
+        <div>
+          <p>Junior Cybersecurity Analyst Intern @ Hewlett Packard Enterprise (Feb 2024 – Present)</p>
+          <p>Member of Technical Staff – Intern @ Facilio (Sep 2024 – Dec 2024)</p>
+        </div>
+      )
     },
     projects: {
       description: 'Shows my featured projects.',
@@ -48,20 +48,23 @@ export function Terminal() {
   };
 
   commandList.help = {
-      description: 'Shows a list of available commands.',
-      content: (
-        <div className="space-y-1">
-          <p className="font-bold">Available commands:</p>
-          <ul className="list-disc list-inside">
-            {Object.keys(commandList).map(cmd => (
-              <li key={cmd}><span className="text-purple-400">{cmd}</span> - {commandList[cmd].description}</li>
-            ))}
-             <li><span className="text-purple-400">clear</span> - Clears the terminal output.</li>
-          </ul>
-        </div>
-      )
+    description: 'Shows a list of available commands.',
+    content: (
+      <div className="space-y-1">
+        <p className="font-bold">Available commands:</p>
+        <ul className="list-disc list-inside">
+          {Object.keys(commandList).map(cmd => (
+            <li key={cmd}>
+              <span className="text-purple-400">{cmd}</span> - {commandList[cmd].description}
+            </li>
+          ))}
+          <li>
+            <span className="text-purple-400">clear</span> - Clears the terminal output.
+          </li>
+        </ul>
+      </div>
+    )
   };
-
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -81,11 +84,11 @@ export function Terminal() {
       result = `Command not found: ${command}. Type 'help' for a list of commands.`;
       setOutput(prev => [...prev, { command, result }]);
     }
-    
+
     setInput('');
   };
 
-   useEffect(() => {
+  useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
@@ -96,28 +99,36 @@ export function Terminal() {
   }, []);
 
   return (
-    <div 
-      className="bg-black/70 backdrop-blur-sm border border-white/20 rounded-lg shadow-2xl shadow-purple-500/10 h-96 flex flex-col"
+    <div
+      className="danus-terminal bg-black/90 backdrop-blur-sm border border-white/20 rounded-lg shadow-2xl shadow-purple-500/20 h-96 flex flex-col"
       onClick={() => inputRef.current?.focus()}
     >
-      <div className="flex-shrink-0 bg-gray-800/50 flex items-center justify-between px-4 py-2 rounded-t-lg border-b border-white/20">
+      {/* Terminal header */}
+      <div className="flex-shrink-0 bg-gray-900/80 flex items-center justify-between px-4 py-2 rounded-t-lg border-b border-white/20">
         <div className="flex items-center space-x-2">
-            <TerminalIcon className="w-5 h-5 text-purple-400" />
-            <span className="text-sm font-medium text-gray-300">/bin/bash</span>
+          <TerminalIcon className="w-5 h-5 text-purple-400" />
+          <span className="text-sm font-medium text-gray-300 select-none">/bin/bash</span>
         </div>
         <div className="flex space-x-1.5">
-            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+          <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
       </div>
-      <div ref={scrollRef} className="flex-grow p-4 overflow-y-auto text-sm font-mono text-gray-300 space-y-4">
+
+      {/* Terminal body */}
+      <div
+        ref={scrollRef}
+        className="flex-grow p-4 overflow-y-auto text-sm font-mono space-y-4"
+        style={{ fontFamily: "'JetBrains Mono', monospace" }}
+      >
         <div>
-            Welcome to my interactive terminal! Type `help` to see available commands. e.g. 'about'
+          Welcome to <span className="text-purple-400 font-bold select-text">D.A.N.U.S.</span> interactive terminal! Type <code>help</code> to see available commands.
         </div>
+
         {output.map((line, index) => (
           <div key={index}>
-            <div className="flex items-center">
+            <div className="flex items-center select-text">
               <span className="text-green-400">guest@dharani-portfolio</span>
               <span className="text-gray-500">:</span>
               <span className="text-blue-400">~</span>
@@ -127,20 +138,23 @@ export function Terminal() {
             <div className="text-white/90">{line.result}</div>
           </div>
         ))}
-        <form onSubmit={handleFormSubmit} className="flex items-center">
-           <span className="text-green-400">guest@dharani-portfolio</span>
-           <span className="text-gray-500">:</span>
-           <span className="text-blue-400">~</span>
-           <span className="text-gray-500">$</span>
+
+        {/* Input line */}
+        <form onSubmit={handleFormSubmit} className="flex items-center select-text">
+          <span className="text-green-400">guest@dharani-portfolio</span>
+          <span className="text-gray-500">:</span>
+          <span className="text-blue-400">~</span>
+          <span className="text-gray-500">$</span>
           <input
             ref={inputRef}
             type="text"
             value={input}
             onChange={handleInputChange}
-            className="flex-grow bg-transparent border-none focus:ring-0 outline-none text-gray-300 ml-2"
+            className="flex-grow bg-transparent border-none focus:ring-0 outline-none text-gray-300 ml-2 font-mono"
             autoFocus
             autoComplete="off"
             spellCheck="false"
+            style={{ fontFamily: "'JetBrains Mono', monospace" }}
           />
         </form>
       </div>

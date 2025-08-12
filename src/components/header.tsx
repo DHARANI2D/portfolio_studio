@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from "next/link";
 import {
-  Rocket, Users, Briefcase, Code, Target, Award, BookOpen, Mail, Menu, X
+  Rocket, Users, Briefcase, Code, Target, Award, BookOpen, Mail, Menu, X, Cpu
 } from 'lucide-react';
 import { SectionId } from '@/app/page';
 
@@ -17,6 +17,7 @@ const navigationItems: { id: SectionId; label: string; icon: React.ElementType }
   { id: 'experience', label: 'Experience', icon: Briefcase },
   { id: 'projects', label: 'Projects', icon: Code },
   { id: 'skills', label: 'Skills', icon: Target },
+  { id: 'core-skills', label: 'AI Skills', icon: Cpu },
   { id: 'certifications', label: 'Certifications', icon: Award },
   { id: 'blog', label: 'Blog', icon: BookOpen },
   { id: 'contact', label: 'Contact', icon: Mail },

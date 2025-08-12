@@ -35,7 +35,7 @@ CONTEXT:
 **Personal Information:**
 - Name: Dharanidharan Senthilkumar
 - Role: Cybersecurity Specialist & Developer
-- Based In: Coimbatore, Tamil Nadu, India (Hometown)
+- Based In: Bengaluru, Karnataka, India
 - Contact Email: dharanidharan2d@gmail.com
 - Contact Phone: +91 6385854466
 - GitHub: https://github.com/DHARANI2D
@@ -56,6 +56,14 @@ An emerging cybersecurity professional with expertise in threat detection, incid
     - Focused on performance tuning, stream analytics, and secure architecture integration.
     - Assisted in processing large-scale building automation data.
 
+**Core AI Skills:**
+- Artificial Intelligence: Machine Learning, Deep Learning, Reinforcement Learning
+- Computer Vision: Image & Video Analysis, Deep Fake Detection
+- NLP: Text Classification, Sentiment Analysis, Speech-to-Text
+- Data Science: Data Preprocessing, Feature Engineering, Predictive Analytics
+- AI Deployment: TensorFlow, PyTorch, FastAPI, Docker
+- Cloud AI Integration: AWS, Azure, Kubernetes for AI workloads
+
 **Key Skills (with proficiency):**
 - Cybersecurity: 95%
 - Incident Response: 92%
@@ -66,13 +74,17 @@ An emerging cybersecurity professional with expertise in threat detection, incid
 - Blockchain: 82%
 - Pentesting: 80%
 
-**Featured Projects (with GitHub links):**
-1.  **Cybersecurity Incident Response Platform:** Advanced platform for monitoring network traffic and automating security incident responses. (https://github.com/DHARANI2D/Cybersecurity_Incident_Response_Platform)
-2.  **QuantCrypt - Quantum-Resistant Storage:** Cloud storage solution using quantum-resistant algorithms with AWS S3. (https://github.com/DHARANI2D/quantum-crypt-encryption)
-3.  **Ransomware Detection & Prevention:** Real-time file system monitoring tool to detect and halt ransomware behavior. (https://github.com/DHARANI2D/ransomware_detection)
-4.  **Deep Fake Detection Engine:** AI-powered web engine for detecting deep fake videos using spectral analysis. (https://github.com/DHARANI2D/Deep_Fake_Detection)
-5.  **Credit Card Fraud Detection:** ML-based system to identify evolving fraud tactics. (https://github.com/DHARANI2D/credit-card-fraud-detection-app)
-6.  **Structured Terraform Infrastructure:** Modular Kubernetes cluster deployment on AWS with secure state management. (https://github.com/DHARANI2D/terraform-aws)
+**Featured AI Projects (with GitHub links):**
+1.  **Deep Fake Detection Engine:** AI-powered web engine that detects and prevents the spread of deep fake videos using video frame analysis and audio spectral patterns. (https://github.com/DHARANI2D/Deep_Fake_Detection)
+    - Tech: Machine Learning, Computer Vision, Audio Analysis
+2.  **Credit Card Fraud Detection:** Adaptive ML system that identifies evolving fraud patterns by combining supervised learning with anomaly detection. (https://github.com/DHARANI2D/credit-card-fraud-detection-app)
+    - Tech: Python, Data Science, Machine Learning
+3.  **Ransomware Behavior Detection (AI-driven):** Behavioral model analyzing file access patterns to stop encryption-based attacks before execution. (https://github.com/DHARANI2D/ransomware_detection)
+    - Tech: Python, Behavioral Analysis, Real-time Monitoring
+4.  **QuantCrypt - Quantum-Resistant Storage:** AI-assisted encryption strategy for secure cloud storage, designed to resist quantum computing threats. (https://github.com/DHARANI2D/quantum-crypt-encryption)
+    - Tech: Quantum Cryptography, AWS S3, Python
+5.  **AI-driven Incident Response Automation:** System that analyzes security logs with AI models to predict and auto-respond to incidents. (https://github.com/DHARANI2D/Cybersecurity_Incident_Response_Platform)
+    - Tech: Machine Learning, NLP, FastAPI
 
 **Certifications:**
 - AWS Certified Cloud Practitioner (Amazon Web Services)

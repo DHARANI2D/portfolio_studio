@@ -106,7 +106,7 @@ const askDharaniFlow = ai.defineFlow(
   },
   async (input) => {
     const headersList = headers();
-    const ip = (await headersList).get('x-forwarded-for') || 'unknown'; 
+    const ip = headersList.get('x-forwarded-for') || 'unknown'; 
     
     console.log(`[askDharaniFlow] Received request from IP: ${ip}`);
     console.log(`[askDharaniFlow] User: "${input.userName || 'Anonymous'}", Question: "${input.question}"`);

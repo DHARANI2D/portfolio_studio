@@ -18,7 +18,7 @@ export type AskDharaniInput = z.infer<typeof AskDharaniInputSchema>;
 export type AskDharaniOutput = string;
 
 export async function askDharani(input: AskDharaniInput): Promise<AskDharaniOutput> {
-  const { output } = await askDharaniFlow(input);
+  const  output  = await askDharaniFlow(input);
   return output || "I'm sorry, I don't have an answer for that.";
 }
 

@@ -8,7 +8,7 @@ export function Terminal() {
   const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  const commands: { [key: string]: { description: string; content: React.ReactNode } } = {
+  const commandList: { [key: string]: { description: string; content: React.ReactNode } } = {
     about: {
       description: 'Displays information about me.',
       content: 'Emerging cybersecurity professional with expertise in threat detection, incident response, and secure cloud architectures. Transforming digital challenges into innovative security solutions.'
@@ -41,20 +41,20 @@ export function Terminal() {
       content: (
         <div>
           <p>Email: dharanidharan2d@gmail.com</p>
-          <p>LinkedIn: linkedin.com/in/your-profile</p>
+          <p>LinkedIn: linkedin.com</p>
         </div>
       )
     }
   };
 
-  commands.help = {
+  commandList.help = {
       description: 'Shows a list of available commands.',
       content: (
         <div className="space-y-1">
           <p className="font-bold">Available commands:</p>
           <ul className="list-disc list-inside">
-            {Object.keys(commands).map(cmd => (
-              <li key={cmd}><span className="text-purple-400">{cmd}</span> - {commands[cmd].description}</li>
+            {Object.keys(commandList).map(cmd => (
+              <li key={cmd}><span className="text-purple-400">{cmd}</span> - {commandList[cmd].description}</li>
             ))}
              <li><span className="text-purple-400">clear</span> - Clears the terminal output.</li>
           </ul>
@@ -74,8 +74,8 @@ export function Terminal() {
 
     if (command === 'clear') {
       setOutput([]);
-    } else if (commands[command]) {
-      result = commands[command].content;
+    } else if (commandList[command]) {
+      result = commandList[command].content;
       setOutput(prev => [...prev, { command, result }]);
     } else {
       result = `Command not found: ${command}. Type 'help' for a list of commands.`;
@@ -113,7 +113,7 @@ export function Terminal() {
       </div>
       <div ref={scrollRef} className="flex-grow p-4 overflow-y-auto text-sm font-mono text-gray-300 space-y-4">
         <div>
-            Welcome to my interactive terminal! Type `help` to see available commands.
+            Welcome to my interactive terminal! Type `help` to see available commands. e.g. 'about'
         </div>
         {output.map((line, index) => (
           <div key={index}>

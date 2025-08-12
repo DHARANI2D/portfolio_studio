@@ -22,45 +22,71 @@ export function ThreeDBackground() {
     currentMount.appendChild(renderer.domElement);
 
     // Particles
-    const particlesCount = 5000;
+    const particlesCount = 7000;
     const positions = new Float32Array(particlesCount * 3);
+    const colors = new Float32Array(particlesCount * 3);
+    const sizes = new Float32Array(particlesCount);
+    
+    const particleGeometry = new THREE.BufferGeometry();
+    const sphere = new THREE.SphereGeometry(2.5, 64, 64);
+    const spherePositions = sphere.attributes.position.array;
 
-    for (let i = 0; i < particlesCount * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 10;
+    for (let i = 0; i < particlesCount; i++) {
+        const i3 = i * 3;
+        const p_i = Math.floor(Math.random() * (spherePositions.length / 3)) * 3;
+        
+        positions[i3] = spherePositions[p_i] + (Math.random() - 0.5) * 0.1;
+        positions[i3 + 1] = spherePositions[p_i+1] + (Math.random() - 0.5) * 0.1;
+        positions[i3 + 2] = spherePositions[p_i+2] + (Math.random() - 0.5) * 0.1;
+        
+        const color = new THREE.Color();
+        color.setHSL(Math.random(), 0.7, 0.7);
+        colors[i3] = color.r;
+        colors[i3 + 1] = color.g;
+        colors[i3 + 2] = color.b;
+
+        sizes[i] = Math.random() * 0.05 + 0.01;
     }
 
-    const particlesGeometry = new THREE.BufferGeometry();
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    const particlesMaterial = new THREE.PointsMaterial({
-      color: 0x66A5AD,
-      size: 0.005,
-      transparent: true,
-      opacity: 0.5
+    particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+    
+    const particleMaterial = new THREE.PointsMaterial({
+        size: 0.05,
+        vertexColors: true,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        opacity: 0.8,
     });
 
-    const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+    const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
 
     // Mouse tracking
-    const mouse = new THREE.Vector2();
+    const mouse = new THREE.Vector2(0,0);
+    const targetRotation = new THREE.Vector2(0,0);
+    
     const handleMouseMove = (event: MouseEvent) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
     };
     window.addEventListener('mousemove', handleMouseMove);
 
     // Animation loop
     const clock = new THREE.Clock();
     const animate = () => {
-      const elapsedTime = clock.getElapsedTime();
+        const elapsedTime = clock.getElapsedTime();
       
-      particles.rotation.y = elapsedTime * 0.05;
-      particles.rotation.x = -mouse.y * 0.2;
-      particles.rotation.y += mouse.x * 0.2;
+        targetRotation.y = mouse.x * 0.5;
+        targetRotation.x = mouse.y * 0.5;
 
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
+        particles.rotation.y += (targetRotation.y - particles.rotation.y) * 0.05;
+        particles.rotation.x += (targetRotation.x - particles.rotation.x) * 0.05;
+        
+        particles.rotation.y += 0.001;
+
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
     };
     animate();
 

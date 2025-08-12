@@ -23,7 +23,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -39,7 +39,7 @@ export function Header() {
           key={item.href}
           href={item.href}
           className={cn(
-            "transition-colors hover:text-accent",
+            "transition-colors hover:text-primary",
             inSheet && "text-lg"
           )}
           onClick={() => setIsMenuOpen(false)}
@@ -53,7 +53,7 @@ export function Header() {
   return (
     <header className={cn(
       "sticky top-0 z-50 w-full transition-all duration-300",
-      scrolled ? "border-b bg-background/80 shadow-md backdrop-blur-sm" : "bg-transparent"
+      scrolled ? "border-b border-border/40 bg-background/80 shadow-lg backdrop-blur-xl" : "bg-transparent"
     )}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="text-xl font-bold font-headline tracking-tight">

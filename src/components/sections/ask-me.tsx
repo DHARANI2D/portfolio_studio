@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState, useRef, useEffect, FormEvent } from "react";
@@ -70,7 +71,7 @@ export function AskMe() {
     <>
       <div className="fixed bottom-8 right-8 z-50 group">
         {showTooltip && (
-          <div className="absolute bottom-full right-0 mb-3 w-max bg-teal-600 text-white text-sm rounded-md px-3 py-1.5 transition-opacity duration-300 opacity-0 group-hover:opacity-100 animate-pulse">
+          <div className="absolute bottom-full right-0 mb-3 w-max bg-teal-600 text-white text-sm rounded-md px-3 py-1.5 transition-opacity duration-500 opacity-100">
             Ask me anything about Dharani!
             <div className="absolute right-4 -bottom-1 w-2 h-2 bg-teal-600 transform rotate-45"></div>
           </div>

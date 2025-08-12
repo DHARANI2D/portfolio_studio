@@ -11,10 +11,9 @@ import { Contact } from "@/components/sections/contact";
 import { Certifications } from '@/components/sections/certifications';
 import { Blog } from '@/components/sections/blog';
 import { AskMe } from '@/components/sections/ask-me';
-import { CoreSkills } from '@/components/sections/core-skills';
 
 
-export type SectionId = 'home' | 'about' | 'experience' | 'projects' | 'skills' | 'core-skills' | 'certifications' | 'blog' | 'contact';
+export type SectionId = 'home' | 'about' | 'experience' | 'projects' | 'skills' | 'certifications' | 'blog' | 'contact';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<SectionId>('home');
@@ -73,7 +72,6 @@ export default function Home() {
         <Experience />
         <Projects />
         <Skills />
-        <CoreSkills />
         <Certifications />
         <Blog />
         <Contact />

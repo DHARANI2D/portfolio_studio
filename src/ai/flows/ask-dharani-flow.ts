@@ -56,23 +56,13 @@ An emerging cybersecurity professional with expertise in threat detection, incid
     - Focused on performance tuning, stream analytics, and secure architecture integration.
     - Assisted in processing large-scale building automation data.
 
-**Core AI Skills:**
-- Artificial Intelligence: Machine Learning, Deep Learning, Reinforcement Learning
-- Computer Vision: Image & Video Analysis, Deep Fake Detection
-- NLP: Text Classification, Sentiment Analysis, Speech-to-Text
-- Data Science: Data Preprocessing, Feature Engineering, Predictive Analytics
-- AI Deployment: TensorFlow, PyTorch, FastAPI, Docker
-- Cloud AI Integration: AWS, Azure, Kubernetes for AI workloads
-
-**Key Skills (with proficiency):**
-- Cybersecurity: 95%
-- Incident Response: 92%
-- Cloud Computing: 90%
-- Python Development: 88%
-- DevSecOps: 87%
-- Machine Learning: 85%
-- Blockchain: 82%
-- Pentesting: 80%
+**Key Skills:**
+- Cybersecurity: Incident Response, Threat Detection, Pentesting, DevSecOps
+- Cloud & DevOps: Cloud Security, AWS, Azure, Kubernetes, Docker
+- Artificial Intelligence: Machine Learning, Deep Learning, NLP, Computer Vision
+- Development: Python, FastAPI, Data Science, TensorFlow, PyTorch
+- Quantum & Blockchain: Quantum Cryptography, Secure Storage, Blockchain Security
+- Data Engineering: Apache Kafka, Redis, Stream Analytics, Data Pipelines
 
 **Featured AI Projects (with GitHub links):**
 1.  **Deep Fake Detection Engine:** AI-powered web engine that detects and prevents the spread of deep fake videos using video frame analysis and audio spectral patterns. (https://github.com/DHARANI2D/Deep_Fake_Detection)

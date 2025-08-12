@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import {
-  Rocket, Users, Briefcase, Code, Target, Award, BookOpen, Mail, Menu, X
+  Rocket, Users, Briefcase, Code, Target, Award, BookOpen, Mail, Menu, X, Bot
 } from 'lucide-react';
 import { SectionId } from '@/app/page';
 
@@ -18,7 +18,8 @@ const navigationItems: { id: SectionId; label: string; icon: React.ElementType }
   { id: 'skills', label: 'Skills', icon: Target },
   { id: 'certifications', label: 'Certifications', icon: Award },
   { id: 'blog', label: 'Blog', icon: BookOpen },
-  { id: 'contact', label: 'Contact', icon: Mail }
+  { id: 'contact', label: 'Contact', icon: Mail },
+  { id: 'ask-me', label: 'Ask Me', icon: Bot }
 ];
 
 export function Header({ activeSection, scrollToSection }: HeaderProps) {

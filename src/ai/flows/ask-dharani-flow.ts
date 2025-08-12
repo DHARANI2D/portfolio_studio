@@ -101,6 +101,7 @@ const askDharaniFlow = ai.defineFlow(
     outputSchema: z.string(),
   },
   async (input) => {
+    console.log(`[askDharaniFlow] Question received: "${input.question}"`);
     const llmResponse = await prompt(input);
     return llmResponse.text;
   }

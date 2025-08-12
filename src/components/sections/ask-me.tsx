@@ -10,12 +10,17 @@ interface Message {
   content: string;
 }
 
+type ConversationState = "awaiting_name" | "chatting";
+
 export function AskMe() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showTooltip, setShowTooltip] = useState(true);
+  const [conversationState, setConversationState] = useState<ConversationState>("awaiting_name");
+  const [userName, setUserName] = useState<string | null>(null);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -40,7 +45,7 @@ export function AskMe() {
     if (isOpen && messages.length === 0) {
       setIsLoading(true);
       setTimeout(() => {
-        setMessages([{ role: "bot", content: "Hi! 👋 I’m D.A.N.U.S. (Dynamic Autonomous Neural Understanding System) — your smart guide to Dharanidharan’s portfolio. Ask me anything!" }]);
+        setMessages([{ role: "bot", content: "Hi! 👋 I’m D.A.N.U.S. Before we start, what's your name?" }]);
         setIsLoading(false);
       }, 1000);
     }
@@ -52,11 +57,21 @@ export function AskMe() {
 
     const userMessage: Message = { role: "user", content: input };
     setMessages((prev) => [...prev, userMessage]);
+    const currentInput = input;
     setInput("");
     setIsLoading(true);
 
+    if (conversationState === "awaiting_name") {
+      setUserName(currentInput);
+      setConversationState("chatting");
+      const botMessage: Message = { role: "bot", content: `Nice to meet you, ${currentInput}! How can I help you today?` };
+      setMessages((prev) => [...prev, botMessage]);
+      setIsLoading(false);
+      return;
+    }
+
     try {
-      const botResponse = await askDharani({ question: input });
+      const botResponse = await askDharani({ question: currentInput, userName: userName || undefined });
       const botMessage: Message = { role: "bot", content: botResponse };
       setMessages((prev) => [...prev, botMessage]);
     } catch (error) {
@@ -70,6 +85,13 @@ export function AskMe() {
       setIsLoading(false);
     }
   };
+
+  const getPlaceholderText = () => {
+    if (conversationState === 'awaiting_name') {
+      return "Please enter your name...";
+    }
+    return "e.g., What are your top 3 skills?";
+  }
 
   return (
     <>
@@ -143,7 +165,7 @@ export function AskMe() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="e.g., What are your top 3 skills?"
+                placeholder={getPlaceholderText()}
                 className="flex-grow bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500 transition-all duration-300"
                 disabled={isLoading}
               />

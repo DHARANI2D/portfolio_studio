@@ -1,44 +1,58 @@
-import { Button } from '@/components/ui/button';
-import { Download, Github, Linkedin, Send } from 'lucide-react';
-import Link from 'next/link';
+import { Download, Mail, Github, Linkedin, ChevronRight } from 'lucide-react';
+import { SectionId } from '@/app/page';
 
-export function Hero() {
+interface HeroProps {
+  scrollToSection: (sectionId: SectionId) => void;
+}
+
+export function Hero({ scrollToSection }: HeroProps) {
   return (
-    <section id="hero" className="relative py-32 md:py-48 text-center">
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <p className="font-headline text-primary mb-2 text-lg">Hi, my name is</p>
-        <h1 className="font-headline text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-4 text-foreground">
-          Dharani
-        </h1>
-        <h2 className="font-headline text-4xl md:text-6xl text-foreground/80 font-semibold tracking-tight mb-8">
-          Cybersecurity & Software Development
-        </h2>
-        <p className="max-w-3xl mx-auto text-xl text-muted-foreground mb-12">
-          I'm a security-focused professional with a passion for building secure and resilient systems. I thrive on solving complex problems and defending against digital threats.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
-          <Button size="lg" asChild className="rounded-full text-lg px-8 py-6 shadow-lg">
-            <Link href="#contact">
-              Contact Me <Send className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-          <Button size="lg" variant="secondary" asChild className="rounded-full text-lg px-8 py-6 shadow-lg">
-            <a href="/dharani-cv.pdf" download="Dharani-CV.pdf">
-              Download CV <Download className="ml-2 h-5 w-5" />
+    <section id="home" className="min-h-screen flex items-center justify-center relative pt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="space-y-8">
+          <div className="relative">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+                Dharanidharan
+              </span>
+              <span className="block text-3xl md:text-5xl text-gray-300 mt-2">
+                Cybersecurity Specialist
+              </span>
+            </h1>
+            <div className="absolute -top-10 -right-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+          </div>
+          
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Emerging cybersecurity professional with expertise in threat detection, incident response, 
+            and secure cloud architectures. Transforming digital challenges into innovative security solutions.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/dharani-cv.pdf" download="Dharanidharan-CV.pdf" className="group bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/25 flex items-center space-x-2">
+              <Download className="w-5 h-5 group-hover:animate-bounce" />
+              <span>Download CV</span>
             </a>
-          </Button>
-        </div>
-        <div className="mt-16 flex justify-center gap-4">
-          <Button variant="ghost" size="icon" asChild className="h-12 w-12 hover:bg-primary/10">
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-              <Github className="h-7 w-7" />
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" asChild className="h-12 w-12 hover:bg-primary/10">
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-              <Linkedin className="h-7 w-7" />
-            </Link>
-          </Button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="group border border-purple-500 px-8 py-4 rounded-full text-purple-300 font-semibold transition-all duration-300 hover:bg-purple-500/10 hover:shadow-lg flex items-center space-x-2"
+            >
+              <Mail className="w-5 h-5" />
+              <span>Get In Touch</span>
+              <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </button>
+          </div>
+
+          <div className="flex justify-center space-x-6 mt-8">
+            <a href="https://github.com/DHARANI2D" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform">
+              <Github className="w-8 h-8" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform">
+              <Linkedin className="w-8 h-8" />
+            </a>
+            <a href="mailto:dharanidharan2d@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform">
+              <Mail className="w-8 h-8" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

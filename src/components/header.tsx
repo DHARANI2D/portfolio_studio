@@ -1,84 +1,96 @@
-"use client";
+'use client';
+import { useState } from 'react';
+import {
+  Rocket, Users, Briefcase, Code, Target, Award, BookOpen, Mail, Menu, X
+} from 'lucide-react';
+import { SectionId } from '@/app/page';
 
-import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { Menu, X } from "lucide-react";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "./ui/sheet";
+interface HeaderProps {
+  activeSection: SectionId;
+  scrollToSection: (sectionId: SectionId) => void;
+}
 
-const navItems = [
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#contact", label: "Contact" },
+const navigationItems: { id: SectionId; label: string; icon: React.ElementType }[] = [
+  { id: 'home', label: 'Home', icon: Rocket },
+  { id: 'about', label: 'About', icon: Users },
+  { id: 'experience', label: 'Experience', icon: Briefcase },
+  { id: 'projects', label: 'Projects', icon: Code },
+  { id: 'skills', label: 'Skills', icon: Target },
+  { id: 'certifications', label: 'Certifications', icon: Award },
+  { id: 'blog', label: 'Blog', icon: BookOpen },
+  { id: 'contact', label: 'Contact', icon: Mail }
 ];
 
-export function Header() {
-  const [scrolled, setScrolled] = useState(false);
+export function Header({ activeSection, scrollToSection }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const NavLinks = ({ inSheet }: { inSheet?: boolean }) => (
-    <nav className={cn(
-      "flex items-center gap-6 text-sm font-medium",
-      inSheet && "flex-col items-start gap-4 pt-8"
-    )}>
-      {navItems.map((item) => (
-        <Link
-          key={item.href}
-          href={item.href}
-          className={cn(
-            "transition-colors hover:text-primary",
-            inSheet && "text-lg"
-          )}
-          onClick={() => setIsMenuOpen(false)}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </nav>
-  );
+  const handleScrollTo = (id: SectionId) => {
+    scrollToSection(id);
+    setIsMenuOpen(false);
+  }
 
   return (
-    <header className={cn(
-      "sticky top-0 z-50 w-full transition-all duration-300",
-      scrolled ? "border-b border-border/40 bg-background/80 shadow-lg backdrop-blur-xl" : "bg-transparent"
-    )}>
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="text-xl font-bold font-headline tracking-tight">
-          Dharani's Digital Domain
-        </Link>
-        
-        {isMobile ? (
-          <Sheet open={isMenuOpen} onOpenChange={setIsMenuOpen}>
-            <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-                <span className="sr-only">Open menu</span>
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right">
-              <SheetHeader>
-                <SheetTitle className="text-left font-headline">Navigation</SheetTitle>
-              </SheetHeader>
-              <NavLinks inSheet />
-            </SheetContent>
-          </Sheet>
-        ) : (
-          <NavLinks />
-        )}
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-black/20 backdrop-blur-lg border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          <div className="flex-shrink-0">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              2D
+            </h1>
+          </div>
+          
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navigationItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleScrollTo(item.id)}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${
+                      activeSection === item.id
+                        ? 'bg-purple-500/20 text-purple-300'
+                        : 'text-gray-300 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <Icon className="w-4 h-4" />
+                    <span>{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="md:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-300 hover:text-white p-2"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
+        </div>
       </div>
-    </header>
+
+      {isMenuOpen && (
+        <div className="md:hidden bg-black/90 backdrop-blur-lg">
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            {navigationItems.map((item) => {
+              const Icon = item.icon;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleScrollTo(item.id)}
+                  className="flex items-center space-x-3 w-full px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-md transition-all duration-300"
+                >
+                  <Icon className="w-5 h-5" />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+    </nav>
   );
 }

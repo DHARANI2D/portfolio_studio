@@ -1,69 +1,69 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Mail, Phone, MapPin, Calendar, Award, Briefcase } from "lucide-react";
-
-const personalDetails = [
-  { icon: Mail, label: "Email", value: "dharani.dev@email.com", href: "mailto:dharani.dev@email.com" },
-  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567", href: "tel:+15551234567" },
-  { icon: MapPin, label: "Address", value: "San Francisco, CA" },
-  { icon: Calendar, label: "Date of Birth", value: "October 23, 1998" },
-];
-
-const professionalDetails = [
-    { icon: Briefcase, label: "Experience", value: "3+ Years in Cybersecurity" },
-    { icon: Award, label: "Certifications", value: "CISSP, CompTIA Security+" },
-]
+import { Users, MapPin, Mail, Phone, GraduationCap } from 'lucide-react';
 
 export function About() {
   return (
-    <section id="about" className="py-16 lg:py-24 bg-background">
-      <div className="container mx-auto px-4 md:px-6">
-        <Card className="max-w-4xl mx-auto overflow-hidden shadow-2xl rounded-2xl border-primary/20">
-          <div className="md:flex">
-            <div className="md:w-1/3 bg-gradient-to-br from-primary to-primary/70 text-primary-foreground p-8 flex flex-col items-center justify-center">
-              <Avatar className="h-32 w-32 border-4 border-primary-foreground/50 mb-4 ring-4 ring-primary-foreground/20">
-                <AvatarImage src="https://placehold.co/200x200.png" alt="Dharani" data-ai-hint="professional portrait" />
-                <AvatarFallback>DD</AvatarFallback>
-              </Avatar>
-              <h3 className="font-headline text-2xl font-bold">Dharani</h3>
-              <p className="text-sm text-primary-foreground/80">Cybersecurity Analyst</p>
-            </div>
-            <div className="md:w-2/3 p-8 bg-card">
-              <CardHeader className="p-0 mb-6">
-                <CardTitle className="font-headline text-3xl">About Me</CardTitle>
-                <CardDescription className="pt-2 text-lg">
-                  A dedicated and analytical cybersecurity professional with a passion for software development and protecting digital assets.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
-                  {personalDetails.map((item) => (
-                    <div key={item.label} className="flex items-start gap-3">
-                      <item.icon className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                      <div>
-                        <p className="font-semibold text-base">{item.label}</p>
-                        {item.href ? (
-                          <a href={item.href} className="text-base text-muted-foreground hover:text-foreground transition-colors">{item.value}</a>
-                        ) : (
-                          <p className="text-base text-muted-foreground">{item.value}</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                  {professionalDetails.map((item) => (
-                    <div key={item.label} className="flex items-start gap-3">
-                        <item.icon className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <p className="font-semibold text-base">{item.label}</p>
-                            <p className="text-base text-muted-foreground">{item.value}</p>
-                        </div>
-                    </div>
-                  ))}
+    <section id="about" className="py-20 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              About Me
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            A passionate cybersecurity professional dedicated to protecting digital assets and creating secure, innovative solutions.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
+              <h3 className="text-2xl font-semibold mb-4 text-purple-300">Personal Details</h3>
+              <div className="grid grid-cols-1 gap-4">
+                <div className="flex items-center space-x-3">
+                  <Users className="w-5 h-5 text-purple-400" />
+                  <span className="text-gray-300">Dharanidharan Senthilkumar</span>
                 </div>
-              </CardContent>
+                <div className="flex items-center space-x-3">
+                  <MapPin className="w-5 h-5 text-purple-400" />
+                  <span className="text-gray-300">Coimbatore, Tamil Nadu, India</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Mail className="w-5 h-5 text-purple-400" />
+                  <span className="text-gray-300">dharanidharan2d@gmail.com</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Phone className="w-5 h-5 text-purple-400" />
+                  <span className="text-gray-300">+91 6385854466</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <GraduationCap className="w-5 h-5 text-purple-400" />
+                  <span className="text-gray-300">B.E Computer Science - 8.5 GPA</span>
+                </div>
+              </div>
             </div>
           </div>
-        </Card>
+
+          <div className="space-y-6">
+            <p className="text-lg text-gray-300 leading-relaxed">
+              As an emerging cybersecurity professional, I bring a unique combination of technical expertise 
+              and innovative thinking to the world of digital security. My experience spans from frontline 
+              incident response at Hewlett Packard Enterprise to developing quantum-resistant security solutions.
+            </p>
+            <p className="text-lg text-gray-300 leading-relaxed">
+              I specialize in threat detection, automated incident response, and secure cloud architectures. 
+              My passion lies in staying ahead of emerging threats and developing proactive security measures 
+              that protect organizations in our increasingly connected world.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              {['Cybersecurity', 'Incident Response', 'Cloud Security', 'Automation', 'Threat Intelligence'].map((tag) => (
+                <span key={tag} className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full text-sm font-medium border border-purple-500/30">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

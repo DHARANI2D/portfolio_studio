@@ -1,35 +1,14 @@
-import { Github, Linkedin, Twitter } from "lucide-react";
-import Link from "next/link";
-import { Button } from "./ui/button";
-
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="z-10 w-full border-t bg-background/80 backdrop-blur-sm">
-      <div className="container mx-auto flex flex-col items-center justify-between gap-4 px-4 py-6 sm:flex-row md:px-6">
-        <p className="text-sm text-muted-foreground">
-          &copy; {currentYear} Dharani. All rights reserved.
-        </p>
-        <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="https://github.com" target="_blank" rel="noopener noreferrer">
-              <Github className="h-5 w-5" />
-              <span className="sr-only">GitHub</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-              <Linkedin className="h-5 w-5" />
-              <span className="sr-only">LinkedIn</span>
-            </Link>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-              <Twitter className="h-5 w-5" />
-              <span className="sr-only">Twitter</span>
-            </Link>
-          </Button>
+    <footer className="bg-black/40 backdrop-blur-lg border-t border-white/10 py-8 z-10 relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-gray-400">
+            © 2025 Dharanidharan Senthilkumar. Crafted with passion for cybersecurity excellence.
+          </p>
+          <p className="text-sm text-gray-500 mt-2">
+            "The only way to do great work is to love what you do."
+          </p>
         </div>
       </div>
     </footer>

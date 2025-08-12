@@ -37,7 +37,7 @@ export function AskMe() {
     if (isOpen && messages.length === 0) {
       setIsLoading(true);
       setTimeout(() => {
-        setMessages([{ role: "bot", content: "Hello! I am an AI assistant for Dharanidharan. You can ask me anything about his portfolio, skills, or experience. What would you like to know?" }]);
+        setMessages([{ role: "bot", content: "Hi! 👋 I’m D.A.N.U.S. (Dynamic Autonomous Neural Understanding System) — your smart guide to Dharanidharan’s portfolio. Ask me anything!" }]);
         setIsLoading(false);
       }, 1000);
     }

@@ -2,8 +2,8 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 export function middleware(request: NextRequest) {
-  const ip = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
-  const userAgent = request.headers.get('user-agent') || 'unknown';
+  const ip = request.ip ?? request.headers.get('x-forwarded-for') ?? 'unknown';
+  const userAgent = request.headers.get('user-agent') ?? 'unknown';
   const { pathname, search } = request.nextUrl;
   
   // We only log page visits, not requests for static assets, etc.

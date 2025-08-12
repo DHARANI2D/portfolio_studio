@@ -14,11 +14,20 @@ export function AskMe() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(true);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowTooltip(false);
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, []);
   
   useEffect(scrollToBottom, [messages]);
   
@@ -30,7 +39,7 @@ export function AskMe() {
         setIsLoading(false);
       }, 1000);
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -59,9 +68,18 @@ export function AskMe() {
 
   return (
     <>
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed bottom-8 right-8 z-50 group">
+        {showTooltip && (
+          <div className="absolute bottom-full right-0 mb-3 w-max bg-teal-600 text-white text-sm rounded-md px-3 py-1.5 transition-opacity duration-300 opacity-0 group-hover:opacity-100 animate-pulse">
+            Ask me anything about Dharani!
+            <div className="absolute right-4 -bottom-1 w-2 h-2 bg-teal-600 transform rotate-45"></div>
+          </div>
+        )}
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen)
+            setShowTooltip(false)
+          }}
           className="bg-gradient-to-r from-teal-500 to-emerald-500 p-4 rounded-full text-white font-semibold hover:shadow-2xl hover:shadow-teal-500/25 transition-all duration-300 hover:scale-110 transform"
         >
           {isOpen ? <X className="w-8 h-8" /> : <MessageSquare className="w-8 h-8" />}

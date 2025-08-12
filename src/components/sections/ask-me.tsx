@@ -23,11 +23,14 @@ export function AskMe() {
   };
 
   useEffect(() => {
-    if (isOpen) {
+    if (!isOpen) {
       const timer = setTimeout(() => {
         setShowTooltip(false);
       }, 5000);
       return () => clearTimeout(timer);
+    }
+     if(isOpen) {
+      setShowTooltip(false)
     }
   }, [isOpen]);
   
@@ -72,9 +75,9 @@ export function AskMe() {
     <>
       <div className="fixed bottom-8 right-8 z-50 group">
         {showTooltip && !isOpen && (
-          <div className="absolute bottom-full right-0 mb-3 w-max bg-teal-600 text-white text-sm rounded-md px-3 py-1.5 transition-opacity duration-500 opacity-100">
-            Ask me anything about Dharani!
-            <div className="absolute right-4 -bottom-1 w-2 h-2 bg-teal-600 transform rotate-45"></div>
+          <div className="absolute bottom-full right-0 mb-3 w-max bg-gradient-to-r from-teal-600/90 to-emerald-600/90 backdrop-blur-md text-white text-sm rounded-lg px-4 py-2 shadow-lg border border-white/10 transition-opacity duration-300 opacity-100">
+            I’m DANUS - ask me anything about Dharani!
+            <div className="absolute right-4 -bottom-1.5 w-3 h-3 bg-emerald-600/90 border-b border-r border-white/10 transform rotate-45"></div>
           </div>
         )}
         <button

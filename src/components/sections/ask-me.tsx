@@ -23,12 +23,13 @@ export function AskMe() {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowTooltip(false);
-    }, 5000);
-
-    return () => clearTimeout(timer);
-  }, []);
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        setShowTooltip(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
   
   useEffect(scrollToBottom, [messages]);
   
@@ -36,7 +37,7 @@ export function AskMe() {
     if (isOpen && messages.length === 0) {
       setIsLoading(true);
       setTimeout(() => {
-        setMessages([{ role: "bot", content: "Hello! Ask me anything about Dharanidharan's portfolio." }]);
+        setMessages([{ role: "bot", content: "Hello! I am an AI assistant for Dharanidharan. You can ask me anything about his portfolio, skills, or experience. What would you like to know?" }]);
         setIsLoading(false);
       }, 1000);
     }
@@ -70,7 +71,7 @@ export function AskMe() {
   return (
     <>
       <div className="fixed bottom-8 right-8 z-50 group">
-        {showTooltip && (
+        {showTooltip && !isOpen && (
           <div className="absolute bottom-full right-0 mb-3 w-max bg-teal-600 text-white text-sm rounded-md px-3 py-1.5 transition-opacity duration-500 opacity-100">
             Ask me anything about Dharani!
             <div className="absolute right-4 -bottom-1 w-2 h-2 bg-teal-600 transform rotate-45"></div>

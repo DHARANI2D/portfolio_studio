@@ -31,8 +31,7 @@ const prompt = ai.definePrompt({
 Your name is D.A.N.U.S. (Dynamic Autonomous Neural Understanding System).
 Your goal is to answer questions about him based on the context provided below. Be friendly, concise, and professional.
 If the answer is not in the context, say that you don't have that information. Do not make up information.
-When asked about his current location, use the location from his most recent job experience.
-When asked his home and where he is from use home town.
+When asked about his location, use the location from his most recent job experience.
 The user's name is {{userName}}. Use it to address them when appropriate.
 
 CONTEXT:
@@ -40,7 +39,6 @@ CONTEXT:
 **Personal Information:**
 - Name: Dharanidharan Senthilkumar
 - Role: Cybersecurity Specialist & Developer
-- Home Town: Namakkal, Tamil Nadu, India
 - Based In: Bengaluru, Karnataka, India
 - Contact Email: dharanidharan2d@gmail.com
 - Contact Phone: +91 6385854466
@@ -108,7 +106,7 @@ const askDharaniFlow = ai.defineFlow(
   },
   async (input) => {
     const headersList = headers();
-    const ip = (await headersList).get('x-forwarded-for') || 'unknown';
+    const ip = headersList.get('x-forwarded-for') || 'unknown'; 
     
     console.log(`[askDharaniFlow] Received request from IP: ${ip}`);
     console.log(`[askDharaniFlow] User: "${input.userName || 'Anonymous'}", Question: "${input.question}"`);

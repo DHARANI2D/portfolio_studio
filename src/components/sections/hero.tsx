@@ -1,5 +1,6 @@
 import { Download, Mail, Github, Linkedin, ChevronRight } from 'lucide-react';
 import { SectionId } from '@/app/page';
+import { motion } from 'framer-motion';
 
 interface HeroProps {
   scrollToSection: (sectionId: SectionId) => void;
@@ -8,53 +9,88 @@ interface HeroProps {
 export function Hero({ scrollToSection }: HeroProps) {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative pt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="space-y-8">
-          <div className="relative">
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-red-400 bg-clip-text text-transparent">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="space-y-10"
+        >
+          <div className="relative inline-block">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 1 }}
+              className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-rose-500/20 rounded-full blur-2xl -z-10"
+            />
+            <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
+              <span className="block bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent pb-2">
                 Dharanidharan
               </span>
-              <span className="block text-3xl md:text-5xl text-gray-300 mt-2">
-                Security Engineer · AI Security · Detection Engineering
+              <span className="block text-2xl md:text-4xl text-gradient-primary mt-4 font-semibold leading-tight max-w-4xl mx-auto">
+                Security Engineer building detection, correlation, and AI security systems from first principles
               </span>
             </h1>
-            <div className="absolute -top-10 -right-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl animate-pulse"></div>
           </div>
 
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Security Engineer focused on Detection Engineering, AI Security, and Cloud-Native Defense.
-            I design systems that reason over security signals, enforce zero-trust controls for AI agents,
-            and automate incident response at scale.
-          </p>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="flex flex-col items-center space-y-6"
+          >
+            <div className="text-lg md:text-xl text-gray-400 font-medium tracking-wide uppercase">
+              Frontline SOC experience · Detection Engineering · AI Security · Cloud & Zero Trust
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a href="/dharani-cv.pdf" download="Dharanidharan-CV.pdf" className="group bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/25 flex items-center space-x-2">
+            <p className="text-xl md:text-2xl text-gray-400 max-w-4xl mx-auto leading-relaxed font-light italic border-l-2 border-purple-500/30 pl-8 py-4 bg-white/[0.01] rounded-r-2xl">
+              "I work at the intersection of <span className="text-white font-medium">incident response and system design</span>, building platforms that <span className="text-white font-medium">reason over security signals</span>, <span className="text-white font-medium">correlate attack paths</span>, and <span className="text-white font-medium">enforce trust across cloud and AI workloads</span>."
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          >
+            <a href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD" className="group relative bg-white text-black px-10 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center space-x-2">
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               <span>Download CV</span>
             </a>
             <button
               onClick={() => scrollToSection('contact')}
-              className="group border border-purple-500 px-8 py-4 rounded-full text-purple-300 font-semibold transition-all duration-300 hover:bg-purple-500/10 hover:shadow-lg flex items-center space-x-2"
+              className="group border border-white/20 bg-white/5 backdrop-blur-sm px-10 py-4 rounded-full text-white font-semibold transition-all duration-300 hover:bg-white/10 hover:border-white/40 flex items-center space-x-2"
             >
               <Mail className="w-5 h-5" />
               <span>Get In Touch</span>
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-          </div>
+          </motion.div>
 
-          <div className="flex justify-center space-x-6 mt-8">
-            <a href="https://github.com/DHARANI2D" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform">
-              <Github className="w-8 h-8" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform">
-              <Linkedin className="w-8 h-8" />
-            </a>
-            <a href="mailto:dharanidharan2d@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform">
-              <Mail className="w-8 h-8" />
-            </a>
-          </div>
-        </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+            className="flex justify-center space-x-8 mt-12"
+          >
+            {[
+              { icon: Github, href: "https://github.com/DHARANI2D" },
+              { icon: Linkedin, href: "https://linkedin.com" },
+              { icon: Mail, href: "mailto:dharanidharan2d@gmail.com" }
+            ].map((social, i) => (
+              <a
+                key={i}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-white transition-all duration-300 transform hover:scale-125 hover:-translate-y-1"
+              >
+                <social.icon className="w-7 h-7" />
+              </a>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

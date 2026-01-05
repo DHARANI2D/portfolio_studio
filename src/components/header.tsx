@@ -5,6 +5,7 @@ import {
   Rocket, Users, Briefcase, Code, Target, Award, BookOpen, Mail, Menu, X
 } from 'lucide-react';
 import { SectionId } from '@/app/page';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface HeaderProps {
   activeSection: SectionId;
@@ -31,29 +32,80 @@ export function Header({ activeSection, scrollToSection }: HeaderProps) {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-black/20 backdrop-blur-lg border-b border-white/10">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl">
+      <div className="glass-header rounded-full px-6 py-2 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+        <div className="flex justify-between items-center h-12">
           <div className="flex-shrink-0">
-            <Link href="/">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                2D
-              </h1>
+            <Link href="/" className="group">
+              <span className="text-xl font-black tracking-tighter text-white group-hover:text-purple-400 transition-colors">
+                2D<span className="text-purple-500">.</span>
+              </span>
             </Link>
           </div>
 
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="flex items-center space-x-1">
+              {navigationItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => handleScrollTo(item.id)}
+                    className={`relative px-4 py-2 rounded-full text-xs font-bold tracking-wide transition-all duration-300 flex items-center space-x-2 uppercase ${isActive ? 'text-white' : 'text-gray-400 hover:text-white'
+                      }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="nav-pill"
+                        className="absolute inset-0 bg-white/[0.08] rounded-full -z-10"
+                        transition={{ type: "spring", duration: 0.6 }}
+                      />
+                    )}
+                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-purple-400' : ''}`} />
+                    <span>{item.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            <a
+              href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
+              className="hidden sm:flex px-5 py-2 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform active:scale-95"
+            >
+              Resume
+            </a>
+
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-gray-300 hover:text-white p-2"
+              >
+                {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden mt-4 glass-card rounded-3xl p-6 overflow-hidden"
+          >
+            <div className="grid grid-cols-2 gap-2">
               {navigationItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <button
                     key={item.id}
                     onClick={() => handleScrollTo(item.id)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 flex items-center space-x-2 ${activeSection === item.id
-                      ? 'bg-purple-500/20 text-purple-300'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
-                      }`}
+                    className="flex items-center space-x-3 px-4 py-3 text-xs font-bold text-gray-400 hover:text-white hover:bg-white/5 rounded-2xl transition-all"
                   >
                     <Icon className="w-4 h-4" />
                     <span>{item.label}</span>
@@ -62,54 +114,14 @@ export function Header({ activeSection, scrollToSection }: HeaderProps) {
               })}
               <a
                 href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm font-medium hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 flex items-center space-x-2"
+                className="col-span-2 flex items-center justify-center space-x-3 px-4 py-4 text-xs font-bold text-black bg-white rounded-2xl hover:scale-[1.02] transition-transform mt-4"
               >
-                <span>Resume</span>
+                <span>Download Resume</span>
               </a>
             </div>
-          </div>
-
-          <div className="md:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white p-2"
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {isMenuOpen && (
-        <div className="md:hidden bg-black/90 backdrop-blur-lg">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            {navigationItems.map((item) => {
-              const Icon = item.icon;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => handleScrollTo(item.id)}
-                  className="flex items-center space-x-3 w-full px-3 py-2 text-base font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-md transition-all duration-300"
-                >
-                  <Icon className="w-5 h-5" />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
-            <a
-              href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
-              className="flex items-center space-x-3 w-full px-3 py-2 text-base font-medium text-white bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-md hover:bg-white/10 transition-all duration-300"
-            >
-              <div className="w-5 h-5 flex items-center justify-center">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </div>
-              <span>Resume</span>
-            </a>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

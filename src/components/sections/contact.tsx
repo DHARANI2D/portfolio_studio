@@ -1,86 +1,64 @@
-import { ContactForm } from "../contact-form";
-import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
+import { Mail, MessageSquare, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function Contact() {
   return (
-    <section id="contact" className="py-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-              Get In Touch
-            </span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Ready to collaborate on exciting cybersecurity projects or discuss opportunities
-          </p>
-        </div>
+    <section id="contact" className="py-32 relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px] -z-10"></div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            <div className="bg-gradient-to-br from-cyan-900/20 to-blue-900/20 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
-              <h3 className="text-2xl font-semibold mb-6 text-cyan-300">Contact Information</h3>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 rounded-lg">
-                    <Mail className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-300">Email</p>
-                    <a href="mailto:dharanidharan2d@gmail.com" className="text-cyan-400 hover:underline">dharanidharan2d@gmail.com</a>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 rounded-lg">
-                    <Phone className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-300">Phone</p>
-                    <a href="tel:+916385854466" className="text-cyan-400 hover:underline">+91 6385854466</a>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="bg-gradient-to-r from-cyan-500 to-blue-500 p-3 rounded-lg">
-                    <MapPin className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <p className="text-gray-300">Location</p>
-                    <p className="text-cyan-400">Coimbatore, Tamil Nadu, India</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="glass-card rounded-[3rem] p-16 md:p-24 relative overflow-hidden"
+        >
+          <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/5 blur-3xl -z-10"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-pink-500/5 blur-3xl -z-10"></div>
 
-            <div className="flex space-x-6">
-              <a 
-                href="https://github.com/DHARANI2D" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-gray-700 to-gray-600 p-4 rounded-lg hover:from-gray-600 hover:to-gray-500 transition-all duration-300 hover:scale-110 transform"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="space-y-8"
+          >
+            <h2 className="text-4xl md:text-7xl font-black tracking-tight text-white leading-tight">
+              Let's build something <span className="text-gradient-primary">secure</span>.
+            </h2>
+
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light leading-relaxed">
+              Seeking a Security Engineer who thinks in systems and attack paths? Let's connect and discuss how I can help enforce trust in your environment.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8">
+              <a
+                href="mailto:dharanidharan2d@gmail.com"
+                className="group relative bg-white text-black px-12 py-5 rounded-full font-black uppercase tracking-widest transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(255,255,255,0.2)] flex items-center space-x-3"
               >
-                <Github className="w-6 h-6 text-white" />
+                <Mail className="w-5 h-5" />
+                <span>Send Email</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
-              <a 
+
+              <a
                 href="https://linkedin.com"
-                target="_blank" 
+                target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-blue-600 to-blue-500 p-4 rounded-lg hover:from-blue-500 hover:to-blue-400 transition-all duration-300 hover:scale-110 transform"
+                className="group bg-white/[0.03] border border-white/10 px-12 py-5 rounded-full text-white font-black uppercase tracking-widest transition-all duration-300 hover:bg-white/5 hover:border-white/20 flex items-center space-x-3"
               >
-                <Linkedin className="w-6 h-6 text-white" />
-              </a>
-              <a 
-                href="mailto:dharanidharan2d@gmail.com" 
-                className="bg-gradient-to-r from-purple-600 to-purple-500 p-4 rounded-lg hover:from-purple-500 hover:to-purple-400 transition-all duration-300 hover:scale-110 transform"
-              >
-                <Mail className="w-6 h-6 text-white" />
+                <MessageSquare className="w-5 h-5" />
+                <span>LinkedIn</span>
               </a>
             </div>
-          </div>
 
-          <div className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-lg rounded-2xl p-8 border border-white/10">
-            <ContactForm />
-          </div>
-        </div>
+            <div className="pt-12">
+              <p className="text-[10px] font-black uppercase tracking-[0.5em] text-gray-700">
+                Based in Chennai, India • Open to Global Roles
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

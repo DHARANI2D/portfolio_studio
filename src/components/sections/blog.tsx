@@ -1,58 +1,84 @@
 import { BookOpen, ChevronRight } from 'lucide-react';
 
-const blogPosts = [
+import { motion } from 'framer-motion';
+
+const posts = [
   {
-    title: 'Exploring the Future of Blockchain in the Age of Quantum Computing',
-    excerpt: 'An in-depth analysis of how quantum computing will revolutionize blockchain technology and the security implications for the future.',
-    readTime: '8 min read',
-    gradient: 'from-purple-500 to-indigo-500'
+    title: "The Future of Detection: Reasoning over Events",
+    excerpt: "Why traditional SIEM alerts are failing and how we move towards intent-based behavioral detection.",
+    date: "Jan 15, 2026",
+    readTime: "8 min read",
+    gradient: "from-purple-500/20 to-indigo-500/20"
   },
   {
-    title: 'Safeguarding the Future: Quantum Cryptography Unveiled',
-    excerpt: 'Understanding quantum cryptography principles and their role in creating unbreakable security systems for tomorrow digital landscape.',
-    readTime: '6 min read',
-    gradient: 'from-blue-500 to-cyan-500'
+    title: "Securing AI Agents: The Identity Problem",
+    excerpt: "How to enforce zero-trust for autonomous AI agents in a multi-tenant cloud environment.",
+    date: "Jan 5, 2026",
+    readTime: "12 min read",
+    gradient: "from-red-500/20 to-pink-500/20"
   },
   {
-    title: 'Quantum Odyssey: Unraveling the Mysteries of Tomorrow Computing',
-    excerpt: 'A comprehensive exploration of quantum computing fundamentals and their potential to transform cybersecurity practices.',
-    readTime: '10 min read',
-    gradient: 'from-green-500 to-teal-500'
+    title: "Scaling Trust with Semantic Firewalls",
+    excerpt: "A deep dive into protecting LLMs from prompt injection using semantic enforcement layers.",
+    date: "Dec 20, 2025",
+    readTime: "10 min read",
+    gradient: "from-blue-500/20 to-cyan-500/20"
   }
 ];
 
 export function Blog() {
   return (
-    <section id="blog" className="py-20 bg-black/20">
+    <section id="blog" className="py-32 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Latest Blog Posts
-            </span>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
+        >
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <span className="text-gradient">Writing & Thinking</span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Deep dives into detection engineering, AI security, and modern attack-defense architectures
+          <div className="h-1 w-20 bg-gradient-to-r from-blue-400 to-indigo-400 mx-auto rounded-full mb-8"></div>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-light">
+            Insights on detection engineering, correlation failures, AI security & governance, and the future of evolving security models.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <article key={index} className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-lg rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:transform hover:scale-105 cursor-pointer group">
-              <div className={`bg-gradient-to-r ${post.gradient} p-3 rounded-lg w-fit mb-4`}>
-                <BookOpen className="w-6 h-6 text-white" />
+          {posts.map((post, index) => (
+            <motion.article
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group glass-card rounded-3xl p-8 flex flex-col transition-all duration-300 hover:border-white/20"
+            >
+              <div className={`absolute inset-0 bg-gradient-to-br ${post.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl -z-10`} />
+
+              <div className="flex items-center space-x-4 mb-6">
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{post.date}</span>
+                <span className="w-1 h-1 bg-gray-700 rounded-full"></span>
+                <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">{post.readTime}</span>
               </div>
-              <h3 className="text-xl font-semibold mb-3 group-hover:text-white transition-colors">
+
+              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">
                 {post.title}
               </h3>
-              <p className="text-gray-400 mb-4 h-24 overflow-hidden">
-                {post.excerpt}
+
+              <p className="text-gray-400 text-sm leading-relaxed mb-8 font-light italic">
+                "{post.excerpt}"
               </p>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-purple-400">{post.readTime}</span>
-                <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all" />
+
+              <div className="mt-auto">
+                <button className="text-xs font-black uppercase tracking-[0.2em] text-white/50 group-hover:text-white transition-colors flex items-center space-x-2">
+                  <span>Read Article</span>
+                  <span className="w-8 h-[1px] bg-white/20 group-hover:w-12 group-hover:bg-white transition-all"></span>
+                </button>
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>

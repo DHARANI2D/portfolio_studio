@@ -73,6 +73,8 @@ export function Header({ activeSection, scrollToSection }: HeaderProps) {
           <div className="flex items-center space-x-4">
             <a
               href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden sm:flex px-5 py-2 rounded-full bg-white text-black text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform active:scale-95"
             >
               Resume
@@ -114,6 +116,8 @@ export function Header({ activeSection, scrollToSection }: HeaderProps) {
               })}
               <a
                 href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="col-span-2 flex items-center justify-center space-x-3 px-4 py-4 text-xs font-bold text-black bg-white rounded-2xl hover:scale-[1.02] transition-transform mt-4"
               >
                 <span>Download Resume</span>

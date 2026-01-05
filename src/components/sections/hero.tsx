@@ -54,7 +54,12 @@ export function Hero({ scrollToSection }: HeroProps) {
             transition={{ delay: 0.6, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
-            <a href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD" className="group relative bg-white text-black px-10 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center space-x-2">
+            <a
+              href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative bg-white text-black px-10 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center space-x-2"
+            >
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               <span>Download CV</span>
             </a>

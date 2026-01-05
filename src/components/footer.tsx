@@ -10,13 +10,6 @@ export function Footer() {
             "I am a Security Engineer who designs systems that reason about attacks, enforce trust, and scale with cloud and AI complexity."
           </p>
         </div>
-
-        <a
-          href="https://drive.google.com/uc?export=download&id=1rowC4YzOi6n-Dhad4ajCaUl9kY-ct9aD"
-          className="inline-flex px-8 py-3 rounded-full bg-white text-black text-xs font-black uppercase tracking-widest hover:scale-105 transition-transform active:scale-95"
-        >
-          Download Resume
-        </a>
       </div>
     </footer>
   );

@@ -11,37 +11,63 @@ export function Terminal() {
   const commandList: { [key: string]: { description: string; content: React.ReactNode } } = {
     about: {
       description: 'Displays information about me.',
-      content: 'Emerging cybersecurity professional with expertise in threat detection, incident response, and secure cloud architectures. Transforming digital challenges into innovative security solutions.'
+      content: 'Security Engineer focused on Detection Engineering, AI Security, and Cloud-Native Defense. I design systems that reason over security signals, enforce zero-trust controls for AI agents, and automate incident response at scale.'
     },
     experience: {
       description: 'Lists my professional experience.',
       content: (
-        <div>
-          <p>Junior Cybersecurity Analyst Intern @ Hewlett Packard Enterprise (Feb 2024 – Present)</p>
-          <p>Member of Technical Staff – Intern @ Facilio (Sep 2024 – Dec 2024)</p>
+        <div className="space-y-4">
+          <div>
+            <p className="text-blue-400 font-bold">Hewlett Packard Enterprise (HPE)</p>
+            <div className="pl-4 border-l-2 border-gray-700 ml-1 mt-1 space-y-2">
+              <div>
+                <p className="text-white">Junior Cybersecurity Analyst – Frontline IR</p>
+                <p className="text-xs text-gray-500">Full-time • Feb 2024 – Present</p>
+              </div>
+              <div>
+                <p className="text-gray-400">Cybersecurity Intern</p>
+                <p className="text-xs text-gray-500">Feb 2025 – Aug 2025</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p className="text-green-400 font-bold">Facilio</p>
+            <p className="text-white pl-4">Member of Technical Staff – Intern</p>
+            <p className="text-xs text-gray-500 pl-4">Sep 2024 – Dec 2024</p>
+          </div>
         </div>
       )
     },
     projects: {
       description: 'Shows my featured projects.',
       content: (
-        <ul className="list-disc list-inside">
-          <li>Cybersecurity Incident Response Platform</li>
-          <li>QuantCrypt - Quantum-Resistant Storage</li>
-          <li>Ransomware Detection & Prevention</li>
+        <ul className="space-y-1">
+          <li><span className="text-purple-400 font-semibold">SignalFusion Core</span> - Attack Path Correlation Engine</li>
+          <li><span className="text-purple-400 font-semibold">AEGIS</span> - AI Security Control Plane</li>
+          <li><span className="text-purple-400 font-semibold">ANCHOR</span> - Secure Self-Hosted Dev Platform</li>
+          <li><span className="text-gray-400">Deep Fake Detection Engine</span></li>
+          <li><span className="text-gray-400">Ransomware Behavior Detection</span></li>
         </ul>
       )
     },
     skills: {
       description: 'Lists my key technical skills.',
-      content: 'Cybersecurity, Cloud Computing, Python, Machine Learning, Blockchain, DevSecOps, Incident Response, Pentesting.'
+      content: (
+        <div className="space-y-2">
+          <div><span className="text-blue-400 font-bold">Security:</span> Detection Engineering, Incident Response, Threat Hunting, MITRE ATT&CK</div>
+          <div><span className="text-purple-400 font-bold">AI Security:</span> Prompt Injection Defense, Semantic Firewalls, LLM Risk Modeling</div>
+          <div><span className="text-green-400 font-bold">Cloud & Ops:</span> AWS, Azure, K8s, Terraform, Docker, Zero Trust</div>
+          <div><span className="text-orange-400 font-bold">Engineering:</span> Python, TypeScript, FastAPI, Next.js, Kafka, Redis</div>
+        </div>
+      )
     },
     contact: {
       description: 'Shows my contact information.',
       content: (
         <div>
           <p>Email: dharanidharan2d@gmail.com</p>
-          <p>LinkedIn: linkedin.com</p>
+          <p>LinkedIn: linkedin.com/in/dharanidharan-senthilkumar</p>
+          <p>GitHub: github.com/DHARANI2D</p>
         </div>
       )
     }

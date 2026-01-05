@@ -32,7 +32,7 @@ export function Blog() {
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Insights and thoughts on cybersecurity, quantum computing, and emerging technologies
+            Deep dives into detection engineering, AI security, and modern attack-defense architectures
           </p>
         </div>
 

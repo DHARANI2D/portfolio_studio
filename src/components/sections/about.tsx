@@ -17,18 +17,20 @@ export function About() {
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
-             <p className="text-lg text-gray-300 leading-relaxed">
-              As an emerging cybersecurity professional, I bring a unique combination of technical expertise 
-              and innovative thinking to the world of digital security. My experience spans from frontline 
-              incident response at Hewlett Packard Enterprise to developing quantum-resistant security solutions.
+            <p className="text-lg text-gray-300 leading-relaxed">
+              I am a Security Engineer with hands-on experience in enterprise incident response and
+              a strong focus on detection engineering, AI security, and cloud-native defense systems.
+              Currently working in a frontline SOC environment, I analyze real-world attacks across
+              email, endpoint, cloud, and identity layers.
             </p>
             <p className="text-lg text-gray-300 leading-relaxed">
-              I specialize in threat detection, automated incident response, and secure cloud architectures. 
-              My passion lies in staying ahead of emerging threats and developing proactive security measures 
-              that protect organizations in our increasingly connected world.
+              Beyond operations, I design and build security platforms from first principles —
+              including an AI Security Control Plane (AEGIS), an attack-path reasoning engine
+              (SignalFusion Core), and a self-hosted secure development ecosystem (ANCHOR).
+              My work focuses on turning fragmented telemetry into actionable security intelligence.
             </p>
             <div className="flex flex-wrap gap-3">
-              {['Cybersecurity', 'Incident Response', 'Cloud Security', 'Automation', 'Threat Intelligence'].map((tag) => (
+              {['Detection Engineering', 'AI Security', 'Threat Correlation', 'Zero Trust', 'Cloud Security', 'Security Automation'].map((tag) => (
                 <span key={tag} className="px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full text-sm font-medium border border-purple-500/30">
                   {tag}
                 </span>

@@ -16,23 +16,24 @@ export function Hero({ scrollToSection }: HeroProps) {
                 Dharanidharan
               </span>
               <span className="block text-3xl md:text-5xl text-gray-300 mt-2">
-                Cybersecurity Specialist
+                Security Engineer · AI Security · Detection Engineering
               </span>
             </h1>
             <div className="absolute -top-10 -right-10 w-20 h-20 bg-purple-500/20 rounded-full blur-xl animate-pulse"></div>
           </div>
-          
+
           <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Emerging cybersecurity professional with expertise in threat detection, incident response, 
-            and secure cloud architectures. Transforming digital challenges into innovative security solutions.
+            Security Engineer focused on Detection Engineering, AI Security, and Cloud-Native Defense.
+            I design systems that reason over security signals, enforce zero-trust controls for AI agents,
+            and automate incident response at scale.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a href="/dharani-cv.pdf" download="Dharanidharan-CV.pdf" className="group bg-gradient-to-r from-purple-500 to-pink-500 px-8 py-4 rounded-full text-white font-semibold transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/25 flex items-center space-x-2">
               <Download className="w-5 h-5 group-hover:animate-bounce" />
               <span>Download CV</span>
             </a>
-            <button 
+            <button
               onClick={() => scrollToSection('contact')}
               className="group border border-purple-500 px-8 py-4 rounded-full text-purple-300 font-semibold transition-all duration-300 hover:bg-purple-500/10 hover:shadow-lg flex items-center space-x-2"
             >

@@ -7,7 +7,7 @@ export function Footer() {
             © 2025 Dharanidharan Senthilkumar. Crafted with passion for cybersecurity excellence.
           </p>
           <p className="text-sm text-gray-500 mt-2">
-            "The only way to do great work is to love what you do."
+            Designing security systems that think, reason, and defend.
           </p>
         </div>
       </div>

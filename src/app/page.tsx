@@ -10,7 +10,7 @@ import { Projects } from "@/components/sections/projects";
 import { Contact } from "@/components/sections/contact";
 import { Certifications } from '@/components/sections/certifications';
 import { Blog } from '@/components/sections/blog';
-import { AskMe } from '@/components/sections/ask-me';
+
 
 
 export type SectionId = 'home' | 'about' | 'experience' | 'projects' | 'skills' | 'certifications' | 'blog' | 'contact';
@@ -29,7 +29,7 @@ export default function Home() {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -40,7 +40,7 @@ export default function Home() {
 
     const sections = document.querySelectorAll('section');
     sections.forEach(section => observer.observe(section));
-    
+
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
       sections.forEach(section => observer.unobserve(section));
@@ -56,7 +56,7 @@ export default function Home() {
 
   return (
     <div className="relative">
-       <div 
+      <div
         className="fixed w-4 h-4 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full pointer-events-none z-50 mix-blend-difference"
         style={{
           left: mousePosition.x - 8,
@@ -76,7 +76,7 @@ export default function Home() {
         <Blog />
         <Contact />
       </main>
-      <AskMe />
+
       <Footer />
     </div>
   );

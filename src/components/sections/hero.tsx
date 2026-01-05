@@ -25,7 +25,7 @@ export function Hero({ scrollToSection }: HeroProps) {
             />
             <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
               <span className="block bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent pb-2">
-                Dharanidharan
+                Dharanidharan Senthilkumar
               </span>
               <span className="block text-2xl md:text-4xl text-gradient-primary mt-4 font-semibold leading-tight max-w-4xl mx-auto">
                 Security Engineer building detection, correlation, and AI security systems from first principles
